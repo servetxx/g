@@ -170,8 +170,8 @@ def main(symbols, quote_currency, stop_loss_pct, take_profit_pct):
                     print(f"{datetime.now()} - {symbol} Stop-loss tetiklendi. Fiyat: {current_price}")
 
                 if current_price >= symbol_state['buy_price'] * (1 + take_profit_pct):
-                    if base_balance <= 0:
-                        print(f"{datetime.now()} - {symbol} için yeterli {base_currency} bakiyesi yok.")
+                    if base_balance == 0:
+                        print(f"{symbol} için yeterli {base_currency} bakiyesi yok. Bir sonraki döngüye geçiliyor.")
                         continue
 
                     order = place_sell_order(symbol, base_balance)
